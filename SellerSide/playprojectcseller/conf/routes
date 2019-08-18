@@ -1,0 +1,17 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# An example controller showing a sample home page
+# sbt "~run 9000"
+GET     /                                           controllers.HomeController.index()
+POST    /api/v1/save                                controllers.SellerSideController.saveOrder()
+GET     /api/v1/orders/byId/:orderId/user/:userId   controllers.SellerSideController.checkOrderForAUserId(orderId, userId)
+POST    /api/v1/orders/byIds                        controllers.SellerSideController.getListOfResponse()
+GET     /api/v1/orders/user/:userId                 controllers.SellerSideController.getOrdersOfLast15Days(userId)
+GET     /api/v1/orders/byOrderItemId/:orderItemId   controllers.SellerSideController.getAllOrdersByOrderItemId(orderItemId)
+GET     /api/v1/allProducts                         controllers.SellerSideController.getAllProducts()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file                               controllers.Assets.versioned(path="/public", file: Asset)
